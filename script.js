@@ -4,9 +4,6 @@ const pantallaFinal = document.getElementById('pantalla-final');
 const btnIniciar = document.getElementById('btn-iniciar');
 const btnSalir = document.getElementById('btn-salir');
 const btnVolver = document.getElementById('btn-volver');
-const modalDespedida = document.getElementById('modal-despedida');
-const btnCerrarModal = document.getElementById('btn-cerrar-modal');
-const btnCancelarModal = document.getElementById('btn-cancelar-modal');
 
 const puntosTexto = document.getElementById('puntos');
 const canvas = document.getElementById('gameCanvas');
@@ -556,35 +553,15 @@ btnVolver.addEventListener('click', () => {
   btnIniciar.querySelector('span').innerText = 'Jugar de nuevo 🌻';
 });
 
+const NUMERO_WHATSAPP = '51925601235';
+const MENSAJE_WHATSAPP = encodeURIComponent('¡Me encantaron mis flores amarillas! Muchas gracias....');
+
 btnSalir.addEventListener('click', () => {
-  modalDespedida.classList.remove('hidden');
-});
-
-btnCancelarModal.addEventListener('click', () => {
-  modalDespedida.classList.add('hidden');
-});
-
-btnCerrarModal.addEventListener('click', () => {
-  // Pausar y apagar música
   musica.pause();
   musica.currentTime = 0;
   
-  // Intentar cerrar la pestaña
-  window.close();
-  
-  // Si el navegador no permite window.close(), mostrar pantalla de despedida final
-  document.body.innerHTML = `
-    <div style="height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#000000; color:#ffd166; font-family:'Montserrat',sans-serif; text-align:center; padding:25px; box-sizing:border-box;">
-      <div style="font-size:55px; margin-bottom:18px;">🌻</div>
-      <h1 style="font-family:'Cormorant Garamond',serif; font-size:34px; margin-bottom:10px; color:#ffd166;">¡Hasta pronto!</h1>
-      <p style="color:#e5dccf; font-size:14px; max-width:320px; line-height:1.6; margin-bottom:20px;">
-        Ya puedes cerrar esta pestaña. Gracias por recibir estas flores amarillas 💛
-      </p>
-      <button onclick="location.reload()" style="background:rgba(255,209,102,0.15); border:1px solid #ffd166; color:#ffd166; padding:10px 24px; border-radius:30px; font-size:12px; cursor:pointer; font-weight:600;">
-        Volver a abrir
-      </button>
-    </div>
-  `;
+  // Redireccionar directo a tu chat de WhatsApp
+  window.location.href = `https://wa.me/${NUMERO_WHATSAPP}?text=${MENSAJE_WHATSAPP}`;
 });
 
 let ramoFlores = [];
