@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Flores Amarillas 🌻</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  
+  <canvas id="universoCanvas"></canvas>
+
+  
+  <audio id="musica" loop preload="auto">
+    <source src="musica.m4a" type="audio/mp4">
+    <source src="musica.mp3" type="audio/mp3">
+  </audio>
+
+  
+  <button id="btn-musica" class="btn-audio-control" title="Activar/Silenciar Flores Amarillas">
+    <svg id="icono-audio-on" viewBox="0 0 24 24" width="22" height="22" fill="#ffd166">
+      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+    </svg>
+    <svg id="icono-audio-off" viewBox="0 0 24 24" width="22" height="22" fill="#e5c185" class="hidden">
+      <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+    </svg>
+  </button>
+
+
+  <div id="pantalla-inicio" class="pantalla activa">
+    <div class="tarjeta luxury-card">
+      <div class="emblema-floral">
+        <canvas id="portadaCanvas" width="100" height="100"></canvas>
+      </div>
+
+      <h1 class="titulo-principal">21 de Septiembre</h1>
+      <div class="linea-dorada"></div>
+      <p class="dedicatoria">Un detalle especial pensado para ti</p>
+      
+      
+
+      <p class="instruccion">Recolecta las 15 flores amarillas en el cosmos para armar tu ramo.</p>
+      
+      <div class="botones-inicio-wrapper">
+        <button id="btn-iniciar" class="btn-luxury">
+          <span>Comenzar </span>
+        </button>
+
+        <button id="btn-salir" class="btn-salir hidden">
+          <span>Salir</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pantalla-juego" class="pantalla">
+    <div class="hud">
+      <div class="marcador-luxury">
+        <canvas id="miniFlorHud" width="28" height="28"></canvas>
+        <span class="marcador-texto"><span id="puntos">0</span> / 15</span>
+      </div>
+    </div>
+
+    <div id="mensaje-flotante" class="mensaje-flotante hidden"></div>
+    <canvas id="gameCanvas"></canvas>
+  </div>
+
+  <div id="pantalla-final" class="pantalla">
+    <div class="contenedor-final">
+      
+      <div class="ramo-generativo-box">
+        <canvas id="ramoCanvas"></canvas>
+        <p class="instruccion-ramo"> Toca las flores del ramo para interactuar con ellas</p>
+      </div>
+
+      <div class="carta-elegante">
+        <div class="sello-cera">
+          <svg viewBox="0 0 30 30" width="20" height="20">
+            <path d="M15 3 L18 11 L27 12 L20 18 L22 27 L15 22 L8 27 L10 18 L3 12 L12 11 Z" fill="#fff" opacity="0.95"/>
+          </svg>
+        </div>
+        <h2 class="titulo-nota">Para ti en este día</h2>
+        <div class="separador-floral"></div>
+        <p class="cuerpo-nota">
+          "Él la estaba esperando con una flor amarilla... Dicen que quien te regala flores amarillas promete quedarse a tu lado y llenarte la vida de luz. Hoy quise programar tu propio ramo para recordarte lo especial y brillante que eres"
+        </p>
+        <p class="firma-nota">Feliz 21 de septiembre </p>   
+      </div>
+
+      <button id="btn-volver" class="btn-volver-inicio">
+        <span>🌻 Volver al inicio</span>
+      </button>
+
+    </div>
+  </div>
+
+  <div id="modal-despedida" class="modal-despedida hidden">
+    <div class="tarjeta-despedida">
+      <div class="flor-despedida">🌻</div>
+      <h2>¡Gracias por estar aquí!</h2>
+      <p>Que tu 21 de septiembre esté lleno de sonrisas, momentos mágicos, prometo cambiarlas por unas reales... 💛</p>
+      <button id="btn-cerrar-modal" class="btn-entendido">Hasta pronto </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

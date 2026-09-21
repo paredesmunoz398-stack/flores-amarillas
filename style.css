@@ -1,0 +1,477 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  background: #000000;
+  color: #fff8eb;
+}
+
+#universoCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+  background: #000000;
+}
+
+.pantalla {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.pantalla.activa {
+  display: flex;
+}
+
+.btn-audio-control {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 100, 0.45);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 215, 100, 0.25);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-audio-control:active {
+  transform: scale(0.9);
+}
+
+.luxury-card {
+  background: rgba(12, 12, 16, 0.65);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 215, 120, 0.35);
+  padding: clamp(28px, 6vh, 46px) clamp(20px, 5vw, 38px);
+  border-radius: 28px;
+  text-align: center;
+  width: 92%;
+  max-width: 540px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 215, 100, 0.15);
+  animation: entradaElegante 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes entradaElegante {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.emblema-floral {
+  display: inline-block;
+  margin-bottom: clamp(10px, 1.8vh, 16px);
+  filter: drop-shadow(0 0 20px rgba(255, 209, 102, 0.7));
+}
+
+.titulo-principal {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6.5vw, 46px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ffe082;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 215, 100, 0.4);
+}
+
+.linea-dorada {
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd166, transparent);
+  margin: clamp(10px, 1.8vh, 16px) auto;
+}
+
+.dedicatoria {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(18px, 3.5vw, 23px);
+  color: #fff3db;
+}
+
+.guia-flores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  margin: clamp(14px, 2.5vh, 22px) 0 clamp(10px, 1.8vh, 16px);
+  font-size: clamp(13px, 2.2vw, 15px);
+  color: #ffd166;
+  background: rgba(255, 209, 102, 0.12);
+  border: 1px solid rgba(255, 209, 102, 0.4);
+  padding: 10px 18px;
+  border-radius: 18px;
+}
+
+.instruccion {
+  font-size: clamp(13px, 2vw, 15px);
+  font-weight: 300;
+  color: rgba(255, 248, 235, 0.85);
+  letter-spacing: 0.4px;
+  margin: 12px 0 clamp(20px, 3.5vh, 28px);
+}
+
+.botones-inicio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.btn-luxury {
+  background: linear-gradient(135deg, #ffd166 0%, #e09f2b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #1a0e05;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(14px, 2.2vw, 16px);
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 183, 3, 0.45), 0 0 20px rgba(255, 215, 100, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+  max-width: 320px;
+}
+
+.btn-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(255, 183, 3, 0.6);
+}
+
+.btn-luxury:active {
+  transform: scale(0.97);
+}
+
+.btn-salir {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f7f1e3;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 260px;
+}
+
+.btn-salir:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 209, 102, 0.5);
+  color: #ffd166;
+}
+
+.hud {
+  position: absolute;
+  top: clamp(18px, 3.5vh, 28px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.marcador-luxury {
+  background: rgba(15, 15, 20, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 209, 102, 0.45);
+  padding: 8px 22px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.8), 0 0 15px rgba(255, 209, 102, 0.2);
+}
+
+.marcador-texto {
+  font-size: clamp(16px, 2.5vw, 19px);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ffd166;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  display: block;
+}
+
+.mensaje-flotante {
+  position: absolute;
+  top: 22%;
+  background: rgba(255, 209, 102, 0.96);
+  color: #1a0e05;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 30px;
+  box-shadow: 0 10px 35px rgba(255, 209, 102, 0.5), 0 0 25px rgba(255, 209, 102, 0.3);
+  z-index: 20;
+  text-align: center;
+  max-width: 90%;
+  animation: flotarElegante 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes flotarElegante {
+  0% { opacity: 0; transform: translateY(18px) scale(0.92); }
+  20% { opacity: 1; transform: translateY(0) scale(1); }
+  80% { opacity: 1; transform: translateY(-4px); }
+  100% { opacity: 0; transform: translateY(-24px); }
+}
+
+#pantalla-final {
+  padding: 16px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
+}
+
+.contenedor-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 580px;
+  margin: auto;
+  padding: 10px 0 28px;
+  gap: clamp(14px, 2.5vh, 22px);
+  animation: entradaElegante 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ramo-generativo-box {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: clamp(310px, 48vh, 390px);
+  background: rgba(12, 12, 18, 0.6);
+  border: 1px solid rgba(255, 209, 102, 0.35);
+  border-radius: 28px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 209, 102, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#ramoCanvas {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.instruccion-ramo {
+  position: absolute;
+  bottom: 10px;
+  font-size: 13px;
+  color: #ffd166;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+}
+
+.carta-elegante {
+  position: relative;
+  background: #fdfaf3;
+  color: #3b2014;
+  padding: clamp(26px, 4vh, 36px) clamp(20px, 5vw, 34px) clamp(20px, 3.5vh, 28px);
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9), inset 0 0 25px rgba(212, 163, 115, 0.25);
+  border: 1px solid #ebdcce;
+  text-align: center;
+}
+
+.sello-cera {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #e09f2b 0%, #8c5310 100%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.titulo-nota {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 4.5vw, 32px);
+  font-weight: 600;
+  color: #723e1c;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.separador-floral {
+  width: 50px;
+  height: 1.5px;
+  background: #d49e75;
+  margin: 8px auto 14px;
+}
+
+.cuerpo-nota {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(14px, 2.2vw, 16px);
+  line-height: 1.75;
+  color: #442416;
+  font-weight: 400;
+}
+
+.firma-nota {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(18px, 3vw, 24px);
+  color: #8c4c1d;
+  text-align: right;
+  margin-top: 14px;
+}
+
+.btn-volver-inicio {
+  background: linear-gradient(135deg, rgba(255, 209, 102, 0.2), rgba(224, 159, 43, 0.15));
+  border: 1px solid rgba(255, 209, 102, 0.45);
+  color: #ffd166;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.15s, background 0.15s;
+  width: 100%;
+  max-width: 280px;
+  margin-top: 6px;
+}
+
+.btn-volver-inicio:hover {
+  background: linear-gradient(135deg, rgba(255, 209, 102, 0.35), rgba(224, 159, 43, 0.3));
+  transform: translateY(-2px);
+}
+
+.btn-volver-inicio:active {
+  transform: scale(0.96);
+}
+
+.modal-despedida {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tarjeta-despedida {
+  background: rgba(18, 14, 28, 0.95);
+  border: 1px solid rgba(255, 209, 102, 0.4);
+  padding: 34px 24px;
+  border-radius: 26px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(255, 209, 102, 0.2);
+}
+
+.flor-despedida {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.tarjeta-despedida h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: #ffd166;
+  margin-bottom: 10px;
+}
+
+.tarjeta-despedida p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e5dccf;
+  margin-bottom: 24px;
+}
+
+.btn-entendido {
+  background: linear-gradient(135deg, #ffd166 0%, #e09f2b 100%);
+  border: none;
+  color: #1a0e05;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 12px 30px;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.hidden { display: none !important; }
